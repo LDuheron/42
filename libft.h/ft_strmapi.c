@@ -14,21 +14,21 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*scopie;
+	char	*scopy;
 	size_t	i;
 
-	scopie = (malloc(ft_strlen(s) + 1));
-	if (!(scopie))
+	scopy = (malloc(ft_strlen(s) + 1));
+	if (!(scopy))
 		return (NULL);
 	i = 0;
 	while (s[i])
 	{
 		if (f == NULL)
-			scopie[i] = s[i];
+			scopy[i] = s[i];
 		else
-			scopie[i] = f(i, s[i]);
+			scopy[i] = f(i, s[i]);
 		i++;
 	}
-	scopie[i] = '\0';
-	return (scopie);
+	scopy[i] = '\0';
+	return (scopy);
 }

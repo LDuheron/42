@@ -18,14 +18,12 @@ static size_t	nblen(int n)
 	unsigned int	nb;
 
 	i = 0;
-	nb = 0;
+	nb = n;
 	if (n < 0)
 	{
+		nb *= -1;
 		i++;
-		nb = n * -1;
 	}
-	else
-		nb = n;
 	while (nb != 0 || i == 0)
 	{
 		nb /= 10;
@@ -38,12 +36,12 @@ char	*ft_itoa(int n)
 {
 	size_t	i;
 	char	*s;
-	size_t	j;
+	size_t	len;
 	long	nb;
 
-	j = nblen(n);
+	len = nblen(n);
 	nb = n;
-	s = malloc(j + 1);
+	s = malloc(len + 1);
 	if (!(s))
 		return (0);
 	i = 0;
@@ -52,10 +50,10 @@ char	*ft_itoa(int n)
 		s[i++] = '-';
 		nb *= -1;
 	}
-	s[j] = 0;
-	while (j > i)
+	s[len] = 0;
+	while (len > i)
 	{
-		s[--j] = nb % 10 + '0';
+		s[--len] = nb % 10 + '0';
 		nb /= 10;
 	}
 	return (s);

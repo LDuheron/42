@@ -22,7 +22,7 @@ size_t	get_min(size_t a, size_t b)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	const size_t	len_s = ft_strlen(s);
+	size_t			len_s;
 	size_t			new_len;
 	char			*nchain;
 
@@ -30,10 +30,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		nchain = NULL;
 	else
 	{
+		len_s = ft_strlen(s);
+		new_len = 0;
 		if (start <= len_s)
 			new_len = get_min(len_s - start, len);
 		else
-			new_len = 0;
+			start = len_s;
 		nchain = malloc((new_len + 1) * sizeof(char));
 		if (nchain != NULL)
 			ft_strlcpy(nchain, s + start, new_len + 1);

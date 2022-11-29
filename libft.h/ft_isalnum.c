@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 18:46:26 by lduheron          #+#    #+#             */
-/*   Updated: 2022/11/10 18:46:30 by lduheron         ###   ########.fr       */
+/*   Created: 2022/11/29 13:49:20 by lduheron          #+#    #+#             */
+/*   Updated: 2022/11/29 13:49:25 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if ((c >= '0' && c <= '9') || ft_isalpha(c) == 1)
-		return (1);
-	else
-		return (0);
+	return (ft_isdigit(c) == 1 || ft_isalpha(c) == 1);
 }

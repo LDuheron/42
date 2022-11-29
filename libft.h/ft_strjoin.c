@@ -6,75 +6,36 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:03:47 by lduheron          #+#    #+#             */
-/*   Updated: 2022/11/13 12:03:49 by lduheron         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:38:54 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*join;
+	int		i;
+	int		j;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-int	ft_taille(int size, char **strs, char *sep)
-{
-	int	i;
-	int	res;
-	int	total;
-
-	i = 0;
-	res = 0;
-	while (i < size)
-	{
-		res = res + ft_strlen(strs[i]);
-		i++;
-	}
-	total = (size - 1) * ft_strlen(sep) + res + 1;
-	return (total);
-}
-
-char	*ft_tabl(int size, char **strs, char *sep, char *tab)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
 	j = 0;
-	k = 0;
-	while (i < size)
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	join = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!join)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		j = 0;
-		while (strs[i][j])
-			tab[k++] = strs[i][j++];
-		j = 0;
-		while (sep[j] && i + 1 < size)
-			tab[k++] = sep[j++];
+		join[i] = s1[i];
 		i++;
 	}
-	tab[k] = '\0';
-	return (tab);
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
-	char	*tab;
-
-	if (size == 0)
+	while (s2[j] != '\0' && join)
 	{
-		tab = malloc(sizeof(char));
-		return (tab);
+		join[i] = s2[j];
+		i++;
+		j++;
 	}
-	tab = malloc(sizeof(char) * ft_taille(size, strs, sep));
-	if (tab == NULL)
-		return (NULL);
-	return (ft_tabl(size, strs, sep, tab));
+	join[i] = '\0';
+	return (join);
 }

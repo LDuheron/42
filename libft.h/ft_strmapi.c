@@ -6,26 +6,27 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:02:12 by lduheron          #+#    #+#             */
-/*   Updated: 2022/11/13 12:02:14 by lduheron         ###   ########.fr       */
+/*   Updated: 2022/11/28 20:19:42 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*scopie;
-	int		i;
+	size_t	i;
 
-	i = 0;
 	scopie = (malloc(ft_strlen(s) + 1));
 	if (!(scopie))
-		return ("NULL");
+		return (NULL);
+	i = 0;
 	while (s[i])
 	{
-		scopie[i] = f(i, s[i]);
+		if (f == NULL)
+			scopie[i] = s[i];
+		else
+			scopie[i] = f(i, s[i]);
 		i++;
 	}
 	scopie[i] = '\0';

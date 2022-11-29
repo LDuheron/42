@@ -10,21 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-char	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strdup(char *src)
 {
@@ -43,5 +29,3 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
-/*  permet de dupliquer ume chaine de carctere*/

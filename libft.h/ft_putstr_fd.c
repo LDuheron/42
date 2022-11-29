@@ -6,20 +6,14 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:09:51 by lduheron          #+#    #+#             */
-/*   Updated: 2022/11/11 11:09:54 by lduheron         ###   ########.fr       */
+/*   Updated: 2022/11/28 20:36:11 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	if (s != NULL)
+		write(fd, s, ft_strlen(s));
 }

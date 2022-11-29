@@ -6,54 +6,37 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:13:03 by lduheron          #+#    #+#             */
-/*   Updated: 2022/11/11 11:13:06 by lduheron         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:15:11 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
+
+size_t	get_min(size_t a, size_t b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*nchaine;
-	size_t	i;
+	const size_t	len_s = ft_strlen(s);
+	size_t			new_len;
+	char			*nchain;
 
-	i = 0;
-	nchaine = malloc((len + 1) * (sizeof(int)));
-	if (!(nchaine))
-		return ("NULL");
+	if (s == NULL)
+		nchain = NULL;
 	else
 	{
-		while (i < (len))
-		{
-			nchaine[i] = s[start];
-			i++;
-			start++;
-		}
-		nchaine[i] = '\0';
+		if (start <= len_s)
+			new_len = get_min(len_s - start, len);
+		else
+			new_len = 0;
+		nchain = malloc((new_len + 1) * sizeof(char));
+		if (nchain != NULL)
+			ft_strlcpy(nchain, s + start, new_len + 1);
 	}
-	return (nchaine);
+	return (nchain);
 }
-
-/*
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*nchaine;
-	size_t	i;
-
-	i = 0;
-	nchaine = malloc((len + 1) * (sizeof(int)));
-	if (!(nchaine))
-		return ("NULL");
-	else
-	{
-		while (i < len)
-		{
-			nchaine[i] = s[start];
-			i++;
-			start++;
-		}
-	}
-	return (nchaine);
-}
-*/

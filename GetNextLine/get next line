@@ -7,3 +7,7 @@ buffer pour chaque ligne = taaille buffer = jusqua tomber sur \n
 gerer les fd ??
 une ligne de texte = un buffer
 ranger dans un static 
+
+unt main
+
+fd = open( test, rd_only);

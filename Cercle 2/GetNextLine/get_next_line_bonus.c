@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:36:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/01/13 16:58:35 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:45:17 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*cut_before_end_line(char *remains, int end_line)
 {
@@ -94,18 +94,18 @@ char	*ft_read(int fd, char *remains)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*remains;
+	static char	*remains[1024];
 	int			end_line;
 
 	end_line = 0;
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd > 1024)
 		return (NULL);
-	remains = ft_read(fd, remains);
-	if (!remains)
+	remains[fd] = ft_read(fd, remains[fd]);
+	if (!remains[fd])
 		return (NULL);
-	while (remains[end_line] && remains[end_line] != '\n')
+	while (remains[fd][end_line] && remains[fd][end_line] != '\n')
 		end_line++;
-	line = cut_before_end_line(remains, end_line);
-	remains = cut_after_end_line(remains, end_line);
+	line = cut_before_end_line(remains[fd], end_line);
+	remains[fd] = cut_after_end_line(remains[fd], end_line);
 	return (line);
 }

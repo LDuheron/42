@@ -1,0 +1,52 @@
+FONCTIONS AUTORISEES 
+
+open, close, read, write,
+malloc, free, perror,
+strerror, access, dup, dup2,
+
+execve 
+prend en argument le path et argv
+	executer commande avec  execv  (path = lendroit dans mon envuonnement qu i va contenir tous les dossiers dont jai besoin), , ma commande et mon environenemnt
+
+, exit, fork, pipe,
+unlink, wait, waitpid, my printf
+
+MEANING
+
+Gestion du fichier :  
+open close read 
+
+Gestion de la memoire :
+malloc free
+
+Ecrire
+write printf 
+
+Gestion fork : 
+fork
+getpid
+dup, dup2,
+
+
+ERROR 
+
+char * strerror ( int errCode );
+#include <string.h>
+Cette fonction renvoie la chaîne de caractères associée à un code d'erreur.
+Traditionnellement, on récupère ces codes d'erreurs grâce à la variable errno 
+définie dans l'entête <errno.h>.
+
+Parametre : errCode = le code d'erreur pour lequeretrouver le mesage d'erreur
+Valeur de retour : Renvoie une chaine de caractere de type char * associe au message d'erreur du code specifie
+
+RESTE
+perror,
+strerror, access, 
+execve, exit,  pipe,
+unlink, wait, waitpid,
+
+
+GENERAL GOAL : 
+- lire et enregisrer les here doc
+- lancer toutes les commandes
+- attendre toutes les commandes

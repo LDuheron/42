@@ -5,6 +5,8 @@
 #include <string.h>
 #include <limits.h>
 #include <stdint.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
 
 /* poubelle
 char *find_path(char** env, char *cmd1)
@@ -259,6 +261,11 @@ int main(int argc, char **argv, char **env)
 	// }
 
 	// initialiser les split de commandes, gerer les "grep c"
+	if (argc != 5)
+	{
+		printf("Wrong number of arguments");
+		return (0);
+	}
 	i = 0;
 	splitargv2 = ft_split(argv[2], 32);
 	printf("Splitargv2 %i : %s\n", i, splitargv2[0]);
@@ -269,31 +276,30 @@ int main(int argc, char **argv, char **env)
 	path_cmd1 = find_path(cmd1, env);
 	//printf("No segfault here (main)\n");
 	path_cmd2 = find_path(cmd2, env);
-	printf("LE PATH FINAL POUR CMD1 EST : %s\n", path_cmd1);
-	printf("LE PATH FINAL POUR CMD2 EST : %s\n", path_cmd2);
-	i = 0;
 	pipe(pipefd);
 	pid = fork();
 	if (pid == -1)
 		printf("Erreur.");
 	if (pid == 0) /// pid du child -> fd 1
 	{
+			
 			close(pipefd[0]); // On bloque la possibilite au pipe de lire sur le fd 0.
 			dup2(pipefd[1], 1);
-			// execve la cmd 1
-			// while (splitargv2[i])
-			// {
-			// 	execve(*path_cmd1, &splitargv2[i], env);
-			// 	i++;
-			// }
+			//wait(0);
+			while (splitargv3[i])
+			{
+				execve(path_cmd2, &splitargv3[i], env);
+				i++;
+			}
 			printf("Child.\n");
+			// faire le processus du fils avant le processus du pere ?
 	}
 	else // pid du parent fd -> 0
 	{
-		//waitpid(0);
 		close(pipefd[1]); // On bloque la possibilite au pipe de lire sur le fd 1.
 		dup2(pipefd[0], 0);
-		//execve(*path, argv[], env);
+		i = 0;
+		execve(path_cmd1, &splitargv2[1], env);
 		printf("Parent.");
 	}
 	return (0);

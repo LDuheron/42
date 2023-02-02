@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "fcntl.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "types.h": "c",
+        "wait.h": "c"
     }
 }

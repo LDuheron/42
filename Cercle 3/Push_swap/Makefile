@@ -1,9 +1,11 @@
-NAME = push_swap.a
+NAME = push_swap
 
-SRCS +=	push_swap.c
+# SRCS +=	push_swap.c
+SRCS += actions.c
+SRCS += list_utils.c
+SRCS += swap.c
 
-CFLAGS = -Wall -Werror -Wextra
-AR = ar -rcs
+CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
 RM = rm -rf
 
@@ -14,7 +16,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $^
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -28,3 +30,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+.SILENT:

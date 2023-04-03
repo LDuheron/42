@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:30:00 by lduheron          #+#    #+#             */
-/*   Updated: 2023/03/06 19:11:55 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:15:01 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,12 @@ t_list	*ft_lstlast(t_list *lst)
 	return (tmp);
 }
 
-
-void	ft_lstadd_back_libft(t_list **lst, t_list *new)
-{
-	t_list	*tmp;
-
-	tmp = *lst;
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-}
-
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
 	tmp = *lst;
-	if (!*lst)
+	if (!(*lst))
 		*lst = new;
 	else
 	{
@@ -79,7 +63,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-t_list	*ft_lstnew(char *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new_elem;
 
@@ -90,9 +74,3 @@ t_list	*ft_lstnew(char *content)
 	new_elem->next = NULL;
 	return (new_elem);
 }
-
-// Alloue (avec malloc(3)) et renvoie un nouvel
-// élément. La variable membre ’content’ est
-// initialisée à l’aide de la valeur du paramètre
-// ’content’. La variable ’next’ est initialisée à
-// NULL

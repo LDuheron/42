@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:01:00 by lduheron          #+#    #+#             */
-/*   Updated: 2023/03/03 13:46:44 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:59:31 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,29 @@ typedef struct s_pipex {
 	int	file_out;
 }	t_pipex;
 
-int			main(int argc, char **argv, char **env);
-// utils pipex et split
-void		*ft_memset(void *s, int value, int n);
-void		ft_putstr_fd(char *s, int fd);
-char		**ft_split(char *s, char c);
-char		*ft_strjoin(char const *s1, char const *s2);
-int			ft_strlen(char const *str);
-int			ft_strncmp(const char *s1, const char *s2, int n);
-int			wdcount(char const *s, char c);
-char		*ft_strdup(char *src);
+// Error_management.c
+void		clean(char **cmd, char *path, t_pipex *pipex);
+int			ft_putstr_fd(char *s, int fd);
 
-// get_path
+// Ft_exec.c
 int			ft_exec(char *argv, char **env, t_pipex *pipex);
 char		*find_path(char *cmd, char **path_tableau);
 char		**get_path(char **env);
-void		clean(char **cmd, char *path, t_pipex *pipex);
+
+// Ft_split.c
+char		**ft_split(char *s, char c);
+int			wdcount(char const *s, char c);
+
+// Pipex_utils.c
+int			ft_strlen(char const *str);
+char		*ft_strjoin(char const *s1, char const *s2);
+int			ft_strncmp(const char *s1, const char *s2, int n);
+char		*ft_strdup(char *src);
 
 ///main.c
 void		parent_process(char **argv, char **env, t_pipex *pipex);
 void		child_process(char **argv, char **env, t_pipex *pipex);
 void		pipex_init(t_pipex *pipex);
+int			main(int argc, char **argv, char **env);
 
 #endif

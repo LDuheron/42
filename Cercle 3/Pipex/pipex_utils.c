@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:53:16 by lduheron          #+#    #+#             */
-/*   Updated: 2023/03/03 13:39:45 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:58:44 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ int	ft_strlen(char const *str)
 		len++;
 	}
 	return (len);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s != NULL)
-		write(fd, s, ft_strlen(s));
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -87,16 +81,3 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
-// void	*ft_memset(void *s, int value, int n)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		((unsigned char *)s)[i] = ((unsigned char)value);
-// 		i++;
-// 	}
-// 	return (s);
-// }

@@ -6,22 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:51:27 by lduheron          #+#    #+#             */
-/*   Updated: 2023/03/03 14:49:11 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:41:43 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	clean(char **cmd, char *path, t_pipex *pipex)
-{
-	free(cmd[0]);
-	free(cmd);
-	free(path);
-	if (pipex->fd[0] != -1)
-		close(pipex->fd[0]);
-	if (pipex->fd[1] != -1)
-		close(pipex->fd[1]);
-}
 
 char	**get_path(char **env)
 {

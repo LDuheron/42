@@ -5,8 +5,9 @@ NAME := pipex
 
 ####### INGREDIENTS - BUILD VARIABLES #######
 
+SRCS += error_management.c
+SRCS += ft_exec.c
 SRCS += ft_split.c
-SRCS += ft_exec.c # source files .c
 SRCS += main.c
 SRCS += pipex_utils.c
 

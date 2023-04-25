@@ -1,0 +1,81 @@
+/pipex /dev/stdin ls cat /dev/stdout
+
+./pipex /dev/stdin ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin ls "wc -lj" /dev/stdout
+
+./pipex /dev/stdin lsfhdkf "wc -l" /dev/stdout
+
+./pipex /dev/stdin ls "wc -l" /dev/full
+
+./pipex /dev/stdin /bin/ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin ./ls "wc -l" /dev/stdout
+
+env | grep PATH
+
+./pipex /dev/stdin /bin/./ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin /ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin ls "/bin/wc -l" /dev/stdout
+
+./pipex /dev/stdin ls "./wc -l" /dev/stdout
+
+./pipex file ls "wc -l" /dev/stdout
+
+./pipex file ls "wc -l" file
+
+./pipex file ls "wc -l" /dev/stdout
+
+chmod 000 file
+
+./pipex file ls "wc -l" /dev/stdout
+
+./pipex file ls "wc -l" file
+
+./pipex /dev/stdin ls "wc -l" file
+
+./pipex /dev/stdin cat "ls" /dev/stdout
+
+unset PATH
+
+./pipex /dev/stdin cat "ls" /dev/stdout
+
+./pipex /dev/stdin ls cat /dev/stdout
+
+./pipex /dev/stdin /bin/ls /bin/cat /dev/stdout
+
+./pipex /dev/stdin /bin/ls cat /dev/stdout
+
+./pipex /dev/stdin ls "/bin/wc -l" /dev/stdout
+
+./pipex /dev/stdin ./ls "wc -l" /dev/stdout
+
+unset PATH
+
+./pipex /dev/stdin ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin ls "/bin/wc -l" /dev/stdout
+
+export PATH=/bin/
+
+./pipex /dev/stdin ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin /bin/ls "wc -l" /dev/stdout
+
+./pipex /dev/stdin ./bin/ls "wc -l" /dev/stdout
+
+code test.c
+
+gcc test.c -- mettre main hello world
+
+./pipex /dev/stdin ./a.out "cat" /dev/stdout
+
+unset PATH
+
+env | /bin/grep PATH
+
+/bin/env | /bin/grep PATH
+
+/bin/valgrind ./pipex /dev/stdin ls "cat" /dev/stdout
